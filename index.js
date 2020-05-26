@@ -1,68 +1,60 @@
 // Link to generateMarkdown.js which will write our information from prompt to .md
-let generate = require("./utils/generateMarkdown.js");
-// 
-let fs = require("fs");
-// 
-let inquirer = require("inquirer");
+const generate = require("./utils/generateMarkdown.js");
+// Writing to the filesystem
+const fs = require("fs");
+// Collecting user input
+const inquirer = require("inquirer");
 
-let fileName = fs.writeFile("README.md");
+const util = require("util");
 
+const writeFileAsync = util.promisify(fs.writeFile);
 
-console.log(generate.welcome);
+const welcome = "Welcome to README.md generator, your one stop shop to creating a Read Me file.";
+// const start = "Would you like to create a README.md?"
 
-const questions = [
+// const filename = fs.writeFile("README.md");
 
-    inquirer.prompt([
-
+function promptUser() {
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
-            message: "What is your name?"
+            message: "What is the title for your project?"
         },
         {
-            type: "checkbox",
-            message: "What languages do you know?",
-            name: "stack",
-            choices: [
-                "HTML",
-                "CSS",
-                "JavaScript",
-                "MySQL"
-            ]
+            type: "input",
+            name: "description",
+            message: "Type out the description for your project?"
         },
         {
-            type: "list",
-            message: "What is your preferred method of communication?",
-            name: "contact",
-            choices: [
-                "email",
-                "phone",
-                "telekinesis"
-            ]
-        }
-    ])
-];
+            type: "input",
+            name: "installation",
+            message: "Type out the installation steps for your project?"
+        },
+    ]);
+};
 
-questions.then(function(data) {
+function writeToFile(filename, data) {
 
-    var filename = data.name.toLowerCase().split(' ').join('') + ".json";
-  
-    fs.writeFile(filename, JSON.stringify(data, null, '\t'), function(err) {
-  
-      if (err) {
-        return console.log(err);
-      }
-  
-      console.log("Success!");
-  
-    });
-
-function writeToFile(fileName, data) {
+    // takes in filename and data declarations and sends to generateMarkdown
 
 }
 
-function init() {
+// data constructor for function writeToFile
 
+async function init() {
+    console.log(generate.welcome);
+    try {
+        const data = await promptUser();
+
+        const readme = generateMarkdown(data);
+
+        await writeFileAsync("README.md", readme);
+
+        console.log("Successfully created README.md");
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 init();
@@ -71,6 +63,7 @@ init();
 // Welcome message
 
 // Prompts for title
+// Then user types title and 
 // Description
 // Table of Contents
 // Installation
