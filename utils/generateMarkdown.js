@@ -1,18 +1,22 @@
-let welcome = "Welcome to README.md generator, your one stop shop to creating a Read Me file.";
-let start = "Would you like to create a README.md?"
+// Link to index.js which will receive our information from prompt to .md
+const data = require("../index.js");
 
+const welcome = "Welcome to README.md generator, your one stop shop to creating a Read Me file.";
+const answers = data;
 
-function generateMarkdown(data) {
+function generateMarkdown(answers) {
   return `
-# ${data.title}
-
+# ${answers.title}
+# Description
+${answers.description}
+# Installation
+${answers.installation}
 `;
 }
 
 module.exports = {
   welcome: welcome,
   generateMarkdown: generateMarkdown
-
 };
 
 

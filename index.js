@@ -9,16 +9,13 @@ const util = require("util");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-const welcome = "Welcome to README.md generator, your one stop shop to creating a Read Me file.";
 // const start = "Would you like to create a README.md?"
-
-// const filename = fs.writeFile("README.md");
 
 function promptUser() {
     return inquirer.prompt([
         {
             type: "input",
-            name: "name",
+            name: "title",
             message: "What is the title for your project?"
         },
         {
@@ -34,20 +31,14 @@ function promptUser() {
     ]);
 };
 
-function writeToFile(filename, data) {
-
-    // takes in filename and data declarations and sends to generateMarkdown
-
-}
-
-// data constructor for function writeToFile
-
 async function init() {
     console.log(generate.welcome);
     try {
         const data = await promptUser();
 
-        const readme = generateMarkdown(data);
+        module.exports = data
+
+        const readme = generate.generateMarkdown(data);
 
         await writeFileAsync("README.md", readme);
 
@@ -58,6 +49,8 @@ async function init() {
 }
 
 init();
+
+
 
 // User types node index.js to start command-line questions
 // Welcome message
