@@ -5,30 +5,60 @@ const welcome = "Welcome to README.md generator, your one stop shop to creating 
 const answers = data;
 
 function generateMarkdown(answers) {
+  // Additional functionality for Badges Choices
   if (answers.badges == "GitHub file size") {
-    githubans = "[![Only 32 Kb](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://github.com/Naereen/StrapDown.js/blob/master/strapdown.min.js)";
+    badgeans = "[![Only 32 Kb](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://github.com/Naereen/StrapDown.js/blob/master/strapdown.min.js)";
   };
   if (answers.badges == "GitHub version") {
-    githubans = "[![GitHub version](https://badge.fury.io/gh/Naereen%2FStrapDown.js.svg)](https://github.com/Naereen/StrapDown.js)";
+    badgeans = "[![GitHub version](https://badge.fury.io/gh/Naereen%2FStrapDown.js.svg)](https://github.com/Naereen/StrapDown.js)";
   };
   if (answers.badges == "GitHub hits") {
-    githubans = "[![HitCount](http://hits.dwyl.io/Naereen/badges.svg)](http://hits.dwyl.io/Naereen/badges)";
+    badgeans = "[![HitCount](http://hits.dwyl.io/Naereen/badges.svg)](http://hits.dwyl.io/Naereen/badges)";
   };
+  // Additional functionality for multiple GitHub profiles to display
+  let githubans = answers.github
+  let github = githubans.split(" ");
 
-console.log(answers)
+  let gh3 = ""
+
+  for (value of github) {
+    let gh1 = value;
+    let gh2 = `![Photo of user ${value}](http://github.com/${value}.png)`
+    gh3 += gh1 + `\n` + `\n` + gh2 + `\n` + `\n`;
+  }
+
   return `
-${githubans}
+${badgeans}
+
 # ${answers.title}
+
 # Description
 ${answers.description}
+
+# Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Credits](#Credits)
+* [Tests](#Tests)
+* [Questions](#Questions)
+
 # Installation
 ${answers.installation}
-# Collaborators
-${answers.github}
-![alt text](http://github.com/${answers.github}.png)
-`
 
+# Usage
+${answers.usage}
 
+# License
+${answers.license}
+
+# Tests
+${answers.tests}
+
+# Credits
+${gh3}
+
+[This Read Me was generated using the Good README.md Generator ](https://github.com/josephcbaca/README-Generator)`
     ;
 }
 

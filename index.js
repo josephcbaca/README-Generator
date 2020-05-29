@@ -27,8 +27,23 @@ const questions = [
     },
     {
         type: "input",
+        name: "usage",
+        message: "Type out usage instructions for your project."
+    },
+    {
+        type: "input",
+        name: "license",
+        message: "Share any license information for your project."
+    },
+    {
+        type: "input",
+        name: "test",
+        message: "Share any testing or recommended QA resources for your project."
+    },
+    {
+        type: "input",
         name: "github",
-        message: "Enter your GitHub Username and the GitHub Usernames of your collaborators separted by spaces."
+        message: "Enter your GitHub Username and the GitHub Usernames of your collaborators separted by spaces(Max three)."
       },
       {
         type: "list",
@@ -53,7 +68,7 @@ async function init() {
         const data = await promptUser(questions);
 
         module.exports = data
-        
+
         const readme = generate.generateMarkdown(data);
 
         await writeFileAsync("README.md", readme);
