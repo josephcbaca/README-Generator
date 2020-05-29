@@ -53,7 +53,7 @@ async function init() {
         const data = await promptUser(questions);
 
         module.exports = data
-        console.log(data)
+        
         const readme = generate.generateMarkdown(data);
 
         await writeFileAsync("README.md", readme);
