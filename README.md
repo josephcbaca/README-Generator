@@ -16,10 +16,10 @@ Looking for a good start for your project Read Me?  Let us help you with that!  
 # Installation
 1. Download all contents from https://github.com/josephcbaca/README-Generator
 2. In your terminal navigate to folder that you've downloaded and run "npm i" to install all necessary node packages
-
+3. Now that you area ready to go, in terminal run "node index.js" to start the program and follow the prompts to complete and print your new README.md!
 
 # Usage
-* Now that you area ready to go, in terminal run "node index.js" to start the program and follow the prompts to complete and print your new README.md!
+![Gif showing program functionality](./ProgramFunctionality.gif)
 
 # License
 This is an open source program.  Feel free to use it as you wish and for collaboration purposes see https://github.com/josephcbaca/README-Generator.
