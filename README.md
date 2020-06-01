@@ -27,6 +27,6 @@ This is an open source program.  Feel free to use it as you wish and for collabo
 # Credits
 josephcbaca
 
-![Photo of user josephcbaca](http://github.com/josephcbaca.png)
+![Photo of user josephcbaca](https://github.com/josephcbaca.png)
 
 [This Read Me was generated using the Good README.md Generator ](https://github.com/josephcbaca/README-Generator)

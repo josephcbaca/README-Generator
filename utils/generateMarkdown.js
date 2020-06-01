@@ -23,7 +23,7 @@ function generateMarkdown(answers) {
 
   for (value of github) {
     let gh1 = value;
-    let gh2 = `![Photo of user ${value}](http://github.com/${value}.png)`
+    let gh2 = `![Photo of user ${value}](https://github.com/${value}.png)`
     gh3 += gh1 + `\n` + `\n` + gh2 + `\n` + `\n`;
   }
 
